@@ -26,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
     public Integer currentCount = 0;
 
     //stopwatch
-    public Button startButton, stopButton, resetButton;
+    public Button startButton, stopButton, resetButton, startStopButton;
     public TextView txtTimer;
     public Handler customHandler = new Handler();
     public long startTime=0L, timeInMilliseconds=0L, updateTime=0L, timeSwapBuff=0l;
+    private int checkState = 0;
 
     public Runnable updateTimerThread = new Runnable() {
         @Override
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             timeInMilliseconds = SystemClock.uptimeMillis()-startTime;
             updateTime = timeSwapBuff+timeInMilliseconds;
             int secs=(int) (updateTime/1000);
-            int mins=secs/60;
+            int mins= secs/60;
             secs%=60;
             int milliseconds=(int)(updateTime%1000);
             txtTimer.setText(""+ mins + ":" + String.format("%2d",secs) + ":" + String.format("%3d", milliseconds));
@@ -51,11 +52,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        startStopButton = findViewById(R.id.startStopButton);
         startButton = findViewById(R.id.startButton);
         stopButton = findViewById(R.id.stopButton);
         resetButton = findViewById(R.id.resetButton);
         txtTimer = findViewById(R.id.timerValue);
+
+        startStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkState == 0) {
+                    startStopButton.setText("start");
+                    startTime = SystemClock.uptimeMillis();
+
+                    customHandler.postDelayed(updateTimerThread, 0);
+                    checkState = 1;
+                }
+                // pause
+                else {
+                    startStopButton.setText("stop");
+                    timeSwapBuff += timeInMilliseconds;
+                    customHandler.removeCallbacks(updateTimerThread);
+                    checkState = 0;
+                }
+                startTime = SystemClock.uptimeMillis();
+
+                customHandler.postDelayed(updateTimerThread, 0);
+            }
+        });
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timeSwapBuff+=timeInMilliseconds;
+                timeSwapBuff += timeInMilliseconds;
                 customHandler.removeCallbacks(updateTimerThread);
             }
         });
