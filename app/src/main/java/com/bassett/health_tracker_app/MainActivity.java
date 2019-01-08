@@ -1,5 +1,7 @@
 package com.bassett.health_tracker_app;
 
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +19,70 @@ public class MainActivity extends AppCompatActivity {
     int[] nameList = {R.drawable.stronghands,
             R.drawable.fastfinger,
             R.drawable.jpgfinger
-
     };
-
+//  ImageSwitcher
     private int index = 0;
+    //button counter
     public Integer currentCount = 0;
+
+    //stopwatch
+    public Button startButton, stopButton, resetButton;
+    public TextView txtTimer;
+    public Handler customHandler = new Handler();
+    public long startTime=0L, timeInMilliseconds=0L, updateTime=0L, timeSwapBuff=0l;
+
+    public Runnable updateTimerThread = new Runnable() {
+        @Override
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis()-startTime;
+            updateTime = timeSwapBuff+timeInMilliseconds;
+            int secs=(int) (updateTime/1000);
+            int mins=secs/60;
+            secs%=60;
+            int milliseconds=(int)(updateTime%1000);
+            txtTimer.setText(""+ mins + ":" + String.format("%2d",secs) + ":" + String.format("%3d", milliseconds));
+            customHandler.postDelayed(this,0);
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        startButton = findViewById(R.id.startButton);
+        stopButton = findViewById(R.id.stopButton);
+        resetButton = findViewById(R.id.resetButton);
+        txtTimer = findViewById(R.id.timerValue);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startTime = SystemClock.uptimeMillis();
+
+                customHandler.postDelayed(updateTimerThread, 0);
+            }
+        });
+
+        stopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeSwapBuff+=timeInMilliseconds;
+                customHandler.removeCallbacks(updateTimerThread);
+            }
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView textView = findViewById(R.id.timerValue);
+
+                textView.setText("0:00:000");
+
+            }
+        });
 
 
 
