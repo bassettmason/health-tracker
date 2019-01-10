@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public Button startButton, stopButton, resetButton, startStopButton;
     public TextView txtTimer;
     public Handler customHandler = new Handler();
-    public long startTime=0L, timeInMilliseconds=0L, updateTime=0L, timeSwapBuff=0l;
+    public long startTime=0L, timeInMilliseconds=0L, updateTime=0L, timeSwapBuff=0L;
     private int checkState = 0;
 
     public Runnable updateTimerThread = new Runnable() {
@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             timeInMilliseconds = SystemClock.uptimeMillis()-startTime;
             updateTime = timeSwapBuff+timeInMilliseconds;
-            int secs=(int) (updateTime/1000);
-            int mins= secs/60;
+            int secs = (int)(updateTime/1000);
+            int mins = secs/60;
             secs%=60;
-            int milliseconds=(int)(updateTime%1000);
+            int milliseconds =(int)(updateTime%1000);
             txtTimer.setText(""+ mins + ":" + String.format("%2d",secs) + ":" + String.format("%3d", milliseconds));
             customHandler.postDelayed(this,0);
 
@@ -104,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
                 TextView textView = findViewById(R.id.timerValue);
 
                 textView.setText("0:00:000");
+                timeInMilliseconds = 0;
+                timeInMilliseconds = 0;
+                updateTime = 0;
+                timeSwapBuff = 0;
 
             }
         });
@@ -166,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
             String currentCountString = currentCount.toString();
             textView.setText(currentCountString);
         }
+
+        textView.setText((currentCount));
 
     }
 }
