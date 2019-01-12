@@ -6,18 +6,12 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageSwitcher;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.ViewSwitcher;
+
 
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String life = "hello world";
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
