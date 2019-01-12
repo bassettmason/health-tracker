@@ -42,16 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="start"
-        app:layout_constraintEnd_toStartOf="@+id/stopButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerValue" />
+
 
     <Button
         android:id="@+id/resetButton"
@@ -61,19 +52,10 @@
         android:text="reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintStart_toEndOf="@+id/startStopButton"
         app:layout_constraintTop_toBottomOf="@+id/timerValue" />
 
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="stop"
-        app:layout_constraintEnd_toStartOf="@+id/resetButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/startButton"
-        app:layout_constraintTop_toBottomOf="@+id/timerValue" />
+
 
     <ToggleButton
         android:id="@+id/startStopButton"
@@ -84,9 +66,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="ToggleButton"
+        android:text="@string/start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stopButton" />
+        app:layout_constraintTop_toBottomOf="@+id/resetButton" />
 
 </android.support.constraint.ConstraintLayout>
