@@ -55,8 +55,6 @@ public class Stopwatch extends AppCompatActivity {
         textView.setText(message);
 
         startStopButton = findViewById(R.id.startStopButton);
-        startButton = findViewById(R.id.startButton);
-        stopButton = findViewById(R.id.stopButton);
         resetButton = findViewById(R.id.resetButton);
         txtTimer = findViewById(R.id.timerValue);
 
@@ -64,7 +62,7 @@ public class Stopwatch extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkState == 0) {
-                    startStopButton.setText("start");
+                    startStopButton.setText("stop");
                     startTime = SystemClock.uptimeMillis();
 
                     customHandler.postDelayed(updateTimerThread, 0);
@@ -72,34 +70,15 @@ public class Stopwatch extends AppCompatActivity {
                 }
                 // pause
                 else {
-                    startStopButton.setText("stop");
+                    startStopButton.setText("start");
                     timeSwapBuff += timeInMilliseconds;
                     customHandler.removeCallbacks(updateTimerThread);
                     checkState = 0;
                 }
-                startTime = SystemClock.uptimeMillis();
-
-                customHandler.postDelayed(updateTimerThread, 0);
             }
         });
 
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTime = SystemClock.uptimeMillis();
-
-                customHandler.postDelayed(updateTimerThread, 0);
-            }
-        });
-
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                timeSwapBuff += timeInMilliseconds;
-                customHandler.removeCallbacks(updateTimerThread);
-            }
-        });
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +86,8 @@ public class Stopwatch extends AppCompatActivity {
                 TextView textView = findViewById(R.id.timerValue);
 
                 textView.setText("0:00:000");
+                timeSwapBuff = 0;
+                startTime = SystemClock.uptimeMillis();
             }
         });
 

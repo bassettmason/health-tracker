@@ -27,19 +27,16 @@ public class FingerExercise extends AppCompatActivity {
     public void onButtonClick (View v){
         System.out.println("button was clicked");
         TextView textView = findViewById(R.id.textView);
-        currentCount = currentCount + 1;
-        String everyTenEncouragement = " good job keep it up ";
+        currentCount++;
         String everyFiftyEncouragement = " omg you are amazing";
-        if (currentCount % 10 == 0 && currentCount % 50 != 0) {
-            String currentCountString = currentCount.toString();
-            textView.setText(currentCountString + everyTenEncouragement);
-        } else if (currentCount % 50 == 0) {
-            String currentCountString = currentCount.toString();
-            textView.setText(currentCountString + everyFiftyEncouragement);
-        } else {
-            String currentCountString = currentCount.toString();
-            textView.setText(currentCountString);
-        }
+        String everyTenEncouragement = " good job keep it up ";
+        String currentCountString = currentCount.toString();
 
+        if (currentCount % 50 == 0) {
+            currentCountString += everyFiftyEncouragement;
+        } else if (currentCount % 10 == 0) {
+            currentCountString += everyTenEncouragement;
+        }
+        textView.setText(currentCountString);
     }
 }
