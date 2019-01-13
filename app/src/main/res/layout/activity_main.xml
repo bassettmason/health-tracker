@@ -9,6 +9,19 @@
 
 
     <Button
+        android:id="@+id/sendNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="onNotificationClick"
+        android:text="Notify"
+        app:layout_constraintBottom_toTopOf="@+id/goToFingerExercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/goToInspiration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
