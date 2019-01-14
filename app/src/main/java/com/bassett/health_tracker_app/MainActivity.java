@@ -34,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.HOUR_OF_DAY,1);
-                calendar.set(Calendar.MINUTE,29);
-                calendar.set(Calendar.SECOND,30);
+                //test the notification time to what you want
+//                calendar.set(Calendar.HOUR_OF_DAY,1);
+//                calendar.set(Calendar.MINUTE,29);
+//                calendar.set(Calendar.SECOND,30);
 
                 Intent intent = new Intent(getApplicationContext(),Notification_receiver.class);
 
