@@ -16,28 +16,25 @@ public class NoteRepository {
         noteDatabase = Room.databaseBuilder(context, NoteDatabase.class, DB_NAME).build();
     }
 
-    public void insertTask(String title,
-                           String description) {
+//    public void insertTask(String title,
+//                           String description) {
+//
+//        insertTask(title, description);
+//    }
 
-        insertTask(title, description, false, null);
-    }
-
-    public void insertTask(String title,
-                           String description,
-                           boolean encrypt,
-                           String password) {
+    public void insertTask(String title, String description) {
 
         Note note = new Note();
         note.setTitle(title);
         note.setDescription(description);
         note.setCreatedAt(AppUtils.getCurrentDateTime());
-        note.setModifiedAt(AppUtils.getCurrentDateTime());
-        note.setEncrypt(encrypt);
+//        note.setModifiedAt(AppUtils.getCurrentDateTime());
+//        note.setEncrypt(encrypt);
 
-
-        if(encrypt) {
-            note.setPassword(AppUtils.generateHash(password));
-        } else note.setPassword(null);
+//
+//        if(encrypt) {
+//            note.setPassword(AppUtils.generateHash(password));
+//        } else note.setPassword(null);
 
         insertTask(note);
     }
@@ -52,17 +49,17 @@ public class NoteRepository {
         }.execute();
     }
 
-    public void updateTask(final Note note) {
-        note.setModifiedAt(AppUtils.getCurrentDateTime());
-
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... voids) {
-                noteDatabase.daoAccess().updateTask(note);
-                return null;
-            }
-        }.execute();
-    }
+//    public void updateTask(final Note note) {
+//        note.setModifiedAt(AppUtils.getCurrentDateTime());
+//
+//        new AsyncTask<Void, Void, Void>() {
+//            @Override
+//            protected Void doInBackground(Void... voids) {
+//                noteDatabase.daoAccess().updateTask(note);
+//                return null;
+//            }
+//        }.execute();
+//    }
 
     public void deleteTask(final int id) {
         final LiveData<Note> task = getTask(id);

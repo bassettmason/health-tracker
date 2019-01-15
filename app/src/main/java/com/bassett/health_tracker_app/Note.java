@@ -22,12 +22,12 @@ public class Note implements Serializable {
     @TypeConverters({TimestampConverter.class})
     private Date createdAt;
 
-    @ColumnInfo(name = "modified_at")
-    @TypeConverters({TimestampConverter.class})
-    private Date modifiedAt;
-
-    private boolean encrypt;
-    private String password;
+//    @ColumnInfo(name = "modified_at")
+//    @TypeConverters({TimestampConverter.class})
+//    private Date modifiedAt;
+//
+//    private boolean encrypt;
+//    private String password;
 
     public int getId() {
         return id;
@@ -61,27 +61,27 @@ public class Note implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Date getModifiedAt() {
-        return modifiedAt;
-    }
+//    public Date getModifiedAt() {
+//        return modifiedAt;
+//    }
 
-    public void setModifiedAt(Date modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    public boolean isEncrypt() {
-        return encrypt;
-    }
-
-    public void setEncrypt(boolean encrypt) {
-        this.encrypt = encrypt;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public void setModifiedAt(Date modifiedAt) {
+//        this.modifiedAt = modifiedAt;
+//    }
+//
+//    public boolean isEncrypt() {
+//        return encrypt;
+//    }
+//
+//    public void setEncrypt(boolean encrypt) {
+//        this.encrypt = encrypt;
+//    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 }
