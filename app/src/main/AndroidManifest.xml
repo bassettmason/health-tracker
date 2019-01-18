@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bassett.health_tracker_app">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,10 +27,12 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".FingerExercise" />
-        <activity android:name=".Stopwatch"></activity>
+        <activity android:name=".Stopwatch" />
+        <!--<activity android:name=".Repeating_activity" />-->
 
-        <activity android:name=".Repeating_activity"/>
-        <receiver android:name="Notification_receiver"/>
+        <!--<receiver android:name=".Notification_receiver" />-->
+
+        <activity android:name=".ExerciseDiary" />
     </application>
 
 </manifest>

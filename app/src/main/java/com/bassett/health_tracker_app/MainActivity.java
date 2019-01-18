@@ -6,7 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -70,10 +70,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void sendToExerciseDiary(View v) {
+        Intent intent = new Intent(this, ExerciseDiary.class);
+//        String message = "Inspiration";
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
     public void sendToInspiration(View v) {
         Intent intent = new Intent(this, Inspiration.class);
-        String message = "Inspiration";
-        intent.putExtra(EXTRA_MESSAGE, message);
+//        String message = "Inspiration";
+//        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 

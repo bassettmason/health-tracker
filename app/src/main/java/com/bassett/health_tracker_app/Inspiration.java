@@ -1,7 +1,6 @@
 package com.bassett.health_tracker_app;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -27,12 +26,12 @@ public class Inspiration extends AppCompatActivity {
         setContentView(R.layout.activity_inspiration);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView3);
-        textView.setText(message);
+//        Intent intent = getIntent();
+//        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+//
+//        // Capture the layout's TextView and set the string as its text
+//        TextView textView = findViewById(R.id.textView3);
+//        textView.setText(message);
 
 
         final ImageSwitcher imageSwitcher = findViewById(R.id.imageSwitcher);
