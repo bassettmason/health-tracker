@@ -1,42 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExerciseDiary">
 
-    <EditText
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="531dp"
+        >
 
-    <EditText
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:text="Description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName|textCapWords" />
 
-    <Button
-        android:id="@+id/addExercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addExercise"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:ems="10"
+            android:hint="enter quantity"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+
+            />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/quantity"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="description"
+            android:imeOptions="actionNext"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="26dp"
+            android:onClick="addDiaryEntryOnButtonClick"
+            android:text="submit"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="26dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/diaryRecycler"
+            android:layout_width="320dp"
+            android:layout_height="218dp"
+            android:layout_below="@+id/description"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="94dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
