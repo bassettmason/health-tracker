@@ -58,5 +58,3 @@ Apply consistent styling across the various Activities in your app. Make sure th
 ![lab_26](./screenshots/lab_26.jpg)
 ![lab_27](./screenshots/lab_27.jpg)
 ![lab_27](./screenshots/lab_27_2nd.jpg)
-
-
