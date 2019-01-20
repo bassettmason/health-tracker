@@ -2,6 +2,7 @@ package com.bassett.health_tracker_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.room.Room;
@@ -16,7 +17,7 @@ public class ExerciseDiary extends AppCompatActivity {
     // from Zahra code review and
    //source: http://www.vogella.com/tutorials/AndroidRecyclerView/article.html
     //source:https://medium.com/@guendouz/room-livedata-and-recyclerview-d8e96fb31dfe
-
+    //derek finally helped me get this working fixed xml
 
 
     Exercise exercise;
@@ -35,10 +36,13 @@ public class ExerciseDiary extends AppCompatActivity {
                 .fallbackToDestructiveMigration().build();
 
         dummyData();
+//      https://stackoverflow.com/questions/50399194/how-to-get-size-of-room-list-in-oncreate-on-main-thread
+        Log.d("size of data", String.valueOf(appDatabase.daoAccess().count()));
+//        Log.d("size of data", appDatabase.daoAccess().getById(0).description);
 
-        
+
         recyclerView = findViewById(R.id.diaryRecycler);
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
 
 
         layoutManager = new LinearLayoutManager(this);

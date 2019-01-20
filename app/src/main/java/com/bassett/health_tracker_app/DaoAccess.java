@@ -27,7 +27,8 @@ public interface DaoAccess {
     @Update
     void update(Exercise exercise);
 
-
+    @Query("SELECT COUNT(*) FROM exercise")
+    int count();
 
 
 }
