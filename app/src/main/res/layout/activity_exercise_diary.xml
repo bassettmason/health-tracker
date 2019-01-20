@@ -64,8 +64,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/diaryRecycler"
-            android:layout_width="320dp"
-            android:layout_height="218dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/description"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
