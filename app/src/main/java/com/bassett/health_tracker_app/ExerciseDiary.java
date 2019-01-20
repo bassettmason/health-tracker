@@ -13,14 +13,14 @@ import android.widget.EditText;
 import java.util.Date;
 
 public class ExerciseDiary extends AppCompatActivity {
-    // from Zahra code review and         //source: https://medium.com/@guendouz/room-livedata-and-recyclerview-d8e96fb31dfe
+    // from Zahra code review and
+   //source: http://www.vogella.com/tutorials/AndroidRecyclerView/article.html
+    //source:https://medium.com/@guendouz/room-livedata-and-recyclerview-d8e96fb31dfe
 
 
 
-
-
-    private static Exercise exercise;
-    private static ExerciseDatabase appDatabase;
+    Exercise exercise;
+    private ExerciseDatabase appDatabase;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -34,7 +34,9 @@ public class ExerciseDiary extends AppCompatActivity {
         appDatabase = Room.databaseBuilder(getApplicationContext(), ExerciseDatabase.class, "exercise").allowMainThreadQueries()
                 .fallbackToDestructiveMigration().build();
 
+        dummyData();
 
+        
         recyclerView = findViewById(R.id.diaryRecycler);
         recyclerView.setHasFixedSize(true);
 
@@ -50,6 +52,14 @@ public class ExerciseDiary extends AppCompatActivity {
 
     }
 
+    public void dummyData(){
+        if(appDatabase.daoAccess().getAllExercise().isEmpty()){
+            appDatabase.daoAccess().insertAll(new Exercise("test1", "1", "test1", "test1" ));
+
+            appDatabase.daoAccess().insertAll(new Exercise("test2", "2", "test2", "test2" ));
+
+        }
+    }
 
     public void addDiaryEntryOnButtonClick(View view){
 
